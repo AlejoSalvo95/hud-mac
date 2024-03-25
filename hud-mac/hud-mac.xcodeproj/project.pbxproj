@@ -14,6 +14,8 @@
 		712D0DF22BB1A73200A03DB8 /* hud_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D0DF12BB1A73200A03DB8 /* hud_macTests.swift */; };
 		712D0DFC2BB1A73200A03DB8 /* hud_macUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D0DFB2BB1A73200A03DB8 /* hud_macUITests.swift */; };
 		712D0DFE2BB1A73200A03DB8 /* hud_macUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D0DFD2BB1A73200A03DB8 /* hud_macUITestsLaunchTests.swift */; };
+		71E0C72A2BB1BDEA00D6E19B /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71E0C7292BB1BDEA00D6E19B /* Secrets.plist */; };
+		71E0C72C2BB1BFC600D6E19B /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E0C72B2BB1BFC600D6E19B /* Configurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		712D0DF72BB1A73200A03DB8 /* hud-macUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "hud-macUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		712D0DFB2BB1A73200A03DB8 /* hud_macUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hud_macUITests.swift; sourceTree = "<group>"; };
 		712D0DFD2BB1A73200A03DB8 /* hud_macUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hud_macUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		71E0C7292BB1BDEA00D6E19B /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		71E0C72B2BB1BFC600D6E19B /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +103,9 @@
 				712D0DE12BB1A73100A03DB8 /* ContentView.swift */,
 				712D0DE32BB1A73200A03DB8 /* Assets.xcassets */,
 				712D0DE52BB1A73200A03DB8 /* hud_mac.entitlements */,
+				71E0C7292BB1BDEA00D6E19B /* Secrets.plist */,
 				712D0DE62BB1A73200A03DB8 /* Preview Content */,
+				71E0C72B2BB1BFC600D6E19B /* Configurator.swift */,
 			);
 			path = "hud-mac";
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				712D0DE82BB1A73200A03DB8 /* Preview Assets.xcassets in Resources */,
+				71E0C72A2BB1BDEA00D6E19B /* Secrets.plist in Resources */,
 				712D0DE42BB1A73200A03DB8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				712D0DE22BB1A73100A03DB8 /* ContentView.swift in Sources */,
+				71E0C72C2BB1BFC600D6E19B /* Configurator.swift in Sources */,
 				712D0DE02BB1A73100A03DB8 /* hud_macApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

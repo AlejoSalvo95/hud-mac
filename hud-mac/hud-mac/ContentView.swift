@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 struct ContentView: View {
     @State private var handsPlayed: Int = 0
@@ -14,19 +15,31 @@ struct ContentView: View {
                 .font(.title)
                 .padding()
 
-            // Button to trigger hand tracking functionality
             Button("Track New Hand") {
                 self.trackNewHand()
             }
             .padding()
             .buttonStyle(.bordered)
         }
+        .onAppear {
+            self.countHandsPlayed()
+        }
     }
 
-    // Function to track a new hand - replace this with actual tracking logic
+    func countHandsPlayed() {
+        let fileManager = FileManager.default
+        let path = ConfigManager.readPathFromPlist() ?? ""
+        do {
+            let items = try fileManager.contentsOfDirectory(atPath: path)
+            handsPlayed = items.count
+        } catch {
+            print("Failed to count files: \(error)")
+        }
+        
+    }
+    
     func trackNewHand() {
-        // Placeholder logic for tracking a new hand
-        handsPlayed += 1  // You'll replace this with the actual hand tracking logic later
+        handsPlayed += 1
     }
 }
 

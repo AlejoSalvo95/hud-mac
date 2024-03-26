@@ -1,5 +1,5 @@
 import SwiftUI
-import Foundation
+import AppKit
 
 struct ContentView: View {
     @State private var handsPlayed: Int = 0
@@ -15,31 +15,34 @@ struct ContentView: View {
                 .font(.title)
                 .padding()
 
-            Button("Track New Hand") {
-                self.trackNewHand()
+            Button("Select Hands Directory") {
+                selectHandsDirectory()
             }
             .padding()
             .buttonStyle(.bordered)
         }
-        .onAppear {
-            self.countHandsPlayed()
+    }
+
+    private func selectHandsDirectory() {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+        panel.begin { response in
+            if response == .OK, let url = panel.url {
+                countHandsPlayed(in: url)
+            }
         }
     }
 
-    func countHandsPlayed() {
+    private func countHandsPlayed(in directory: URL) {
         let fileManager = FileManager.default
-        let path = ConfigManager.readPathFromPlist() ?? ""
         do {
-            let items = try fileManager.contentsOfDirectory(atPath: path)
+            let items = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
             handsPlayed = items.count
         } catch {
             print("Failed to count files: \(error)")
         }
-        
-    }
-    
-    func trackNewHand() {
-        handsPlayed += 1
     }
 }
 

@@ -70,13 +70,14 @@ struct ContentView: View {
                 }
             }
         }
-
         var netResults: [String: Double] = [:]
         for (player, startChips) in playerStartChips {
-            print(self.playersData[player], player)
             if let endChips = self.playersData[player] {
+                print(endChips, player)
                 let netResult = endChips - startChips
                 netResults[player] = netResult
+            } else {
+                print("Data not found for player:", player)
             }
         }
         self.playersNetData = netResults

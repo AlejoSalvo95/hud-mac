@@ -12,7 +12,6 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                
                 VStack {
                     Image(systemName: "globe")
                         .imageScale(.large)
@@ -21,6 +20,7 @@ struct ContentView: View {
                     
                     Text("Hands Played: \(handsPlayed)")
                         .font(.title)
+                        .foregroundColor(.blue)
                         .padding()
                     
                     Button("Select Poker Hand File") {
@@ -29,30 +29,39 @@ struct ContentView: View {
                     .padding()
                     .buttonStyle(.bordered)
                     
-                    
-                    Text("Players starting")
-                        .padding()
-                    ForEach(playersStartData.keys.sorted(), id: \.self) { key in
-                        Text("\(key): \(playersStartData[key]!, specifier: "%.2f") in chips")
+                    Group {
+                        Text("Players starting")
+                            .foregroundColor(.green)
+                            .padding()
+                        ForEach(playersStartData.keys.sorted(), id: \.self) { key in
+                            Text("\(key): \(playersStartData[key]!, specifier: "%.2f") in chips")
+                                .foregroundColor(.green)
+                        }
+                        
+                        Text("Players final data")
+                            .foregroundColor(.orange)
+                            .padding()
+                        ForEach(playersData.keys.sorted(), id: \.self) { key in
+                            Text("\(key): \(playersData[key]!, specifier: "%.2f") in chips")
+                                .foregroundColor(.orange)
+                        }
+                        
+                        Text("Players net data")
+                            .foregroundColor(.pink)
+                            .padding()
+                        ForEach(playersNetData.keys.sorted(), id: \.self) { key in
+                            Text("\(key): \(playersNetData[key]!, specifier: "%.2f") in chips")
+                                .foregroundColor(.pink)
+                        }
+
+                        Spacer(minLength: 50)
+
                     }
-                    
-                    
-                    Text("Players final data")
-                        .padding()
-                    ForEach(playersData.keys.sorted(), id: \.self) { key in
-                        Text("\(key): \(playersData[key]!, specifier: "%.2f") in chips")
-                    }
-                    Text("Players starting data")
-                        .padding()
-                    ForEach(playersNetData.keys.sorted(), id: \.self) { key in
-                        Text("\(key): \(playersNetData[key]!, specifier: "%.2f") in chips")
-                    }
+                    .frame(width: geometry.size.width)
                 }
-                .frame(width: geometry.size.width)
             }
         }
     }
-
 
     private func selectPokerHandFile() {
         let panel = NSOpenPanel()

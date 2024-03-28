@@ -10,41 +10,46 @@ struct ContentView: View {
     @State private var playersNetData: [String: Double] = [:]
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-                .padding()
-
-            Text("Hands Played: \(handsPlayed)")
-                .font(.title)
-                .padding()
-
-            Button("Select Poker Hand File") {
-                selectPokerHandFile()
+        GeometryReader { geometry in
+            ScrollView {
+                
+                VStack {
+                    Image(systemName: "globe")
+                        .imageScale(.large)
+                        .foregroundStyle(.tint)
+                        .padding()
+                    
+                    Text("Hands Played: \(handsPlayed)")
+                        .font(.title)
+                        .padding()
+                    
+                    Button("Select Poker Hand File") {
+                        selectPokerHandFile()
+                    }
+                    .padding()
+                    .buttonStyle(.bordered)
+                    
+                    
+                    Text("Players starting")
+                        .padding()
+                    ForEach(playersStartData.keys.sorted(), id: \.self) { key in
+                        Text("\(key): \(playersStartData[key]!, specifier: "%.2f") in chips")
+                    }
+                    
+                    
+                    Text("Players final data")
+                        .padding()
+                    ForEach(playersData.keys.sorted(), id: \.self) { key in
+                        Text("\(key): \(playersData[key]!, specifier: "%.2f") in chips")
+                    }
+                    Text("Players starting data")
+                        .padding()
+                    ForEach(playersNetData.keys.sorted(), id: \.self) { key in
+                        Text("\(key): \(playersNetData[key]!, specifier: "%.2f") in chips")
+                    }
+                }
+                .frame(width: geometry.size.width)
             }
-            .padding()
-            .buttonStyle(.bordered)
-            
-            
-            Text("Players starting")
-                .padding()
-            ForEach(playersStartData.keys.sorted(), id: \.self) { key in
-                Text("\(key): \(playersStartData[key]!, specifier: "%.2f") in chips")
-            }
-            
-            
-            Text("Players final data")
-                .padding()
-            ForEach(playersData.keys.sorted(), id: \.self) { key in
-                Text("\(key): \(playersData[key]!, specifier: "%.2f") in chips")
-            }
-            Text("Players starting data")
-                .padding()
-            ForEach(playersNetData.keys.sorted(), id: \.self) { key in
-                Text("\(key): \(playersNetData[key]!, specifier: "%.2f") in chips")
-            }
-            
         }
     }
 
